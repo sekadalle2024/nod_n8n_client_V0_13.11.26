@@ -1,0 +1,170 @@
+{
+  "table_schema": {
+    "table_name": "feuille_couverture_comptes_dormants",
+    "display_name": "FC-BK-A10 - Audit des levées de blocage des comptes dormants",
+    "n8n_workflow_id": "workflow_audit_comptes_dormants",
+    "description": "Feuille de couverture pour l'audit des réactivations de comptes dormants avec contrôle de la double clé Maker-Checker",
+    "column_definitions": [
+      {
+        "name": "ordre",
+        "type": "number",
+        "label": "N° Ordre",
+        "required": true
+      },
+      {
+        "name": "compte_client",
+        "type": "text",
+        "label": "N° Compte Client",
+        "required": true
+      },
+      {
+        "name": "date_reactivation",
+        "type": "date",
+        "label": "Date Réactivation",
+        "required": true
+      },
+      {
+        "name": "intitule_compte",
+        "type": "text",
+        "label": "Intitulé Compte",
+        "required": true
+      },
+      {
+        "name": "solde_veille",
+        "type": "number",
+        "label": "Solde Veille Réactivation (FCFA)",
+        "required": true
+      },
+      {
+        "name": "visa_agence",
+        "type": "select",
+        "label": "Visa Agence (Maker)",
+        "required": true,
+        "options": ["Oui", "Non"]
+      },
+      {
+        "name": "visa_siege",
+        "type": "select",
+        "label": "Visa Conformité Siège (Checker)",
+        "required": true,
+        "options": ["Oui", "Non"]
+      },
+      {
+        "name": "contact_conforme",
+        "type": "select",
+        "label": "Contact Liquidateur Conforme",
+        "required": true,
+        "options": ["Oui", "Non"]
+      },
+      {
+        "name": "montant_debit",
+        "type": "number",
+        "label": "Montant Débit Réalisé (FCFA)",
+        "required": true
+      },
+      {
+        "name": "ecart",
+        "type": "number",
+        "label": "Écart Non Autorisé (FCFA)",
+        "required": true
+      },
+      {
+        "name": "assertion",
+        "type": "select",
+        "label": "Assertion",
+        "required": false,
+        "options": ["Autorisation", "Formalisation", "Traçabilité", "Validité", "Exhaustivité"]
+      },
+      {
+        "name": "ctr_1",
+        "type": "select",
+        "label": "CTR 1",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "ctr_2",
+        "type": "select",
+        "label": "CTR 2",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "ctr_3",
+        "type": "select",
+        "label": "CTR 3",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "ctr_4",
+        "type": "select",
+        "label": "CTR 4",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "ctr_5",
+        "type": "select",
+        "label": "CTR 5",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "label": "Description",
+        "required": false
+      },
+      {
+        "name": "conclusion",
+        "type": "select",
+        "label": "Conclusion",
+        "required": true,
+        "options": ["Satisfaisant", "Non-satisfaisant"]
+      }
+    ]
+  },
+  "sample_data": [
+    {
+      "ordre": 1,
+      "compte_client": "CPT-DOR-04412",
+      "date_reactivation": "2024-05-14",
+      "intitule_compte": "SOC. IVOIRIENNE LIQUIDATION",
+      "solde_veille": 34000000,
+      "visa_agence": "Oui",
+      "visa_siege": "Non",
+      "contact_conforme": "Non",
+      "montant_debit": 34000000,
+      "ecart": 34000000,
+      "assertion": "Autorisation",
+      "ctr_1": "-",
+      "ctr_2": "-",
+      "ctr_3": "-",
+      "ctr_4": "-",
+      "ctr_5": "-",
+      "description": "Déblocage unilatéral sans visa Siège, coordonnées du liquidateur falsifiées et détournement de 34 000 000 FCFA par chèque de banque non autorisé.",
+      "conclusion": "Non-satisfaisant"
+    },
+    {
+      "ordre": 2,
+      "compte_client": "CPT-DOR-01205",
+      "date_reactivation": "2024-01-18",
+      "intitule_compte": "ETS KOUADIO ET FILS",
+      "solde_veille": 1500000,
+      "visa_agence": "Oui",
+      "visa_siege": "Oui",
+      "contact_conforme": "Oui",
+      "montant_debit": 1500000,
+      "ecart": 0,
+      "assertion": "",
+      "ctr_1": "+",
+      "ctr_2": "+",
+      "ctr_3": "+",
+      "ctr_4": "+",
+      "ctr_5": "+",
+      "description": "Dossier régulier, double clé informatique agence-siège appliquée et pièces justificatives conformes.",
+      "conclusion": "Satisfaisant"
+    }
+  ]
+}

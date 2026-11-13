@@ -1,0 +1,86 @@
+{
+  "table_schema": {
+    "table_name": "plan_recommandations_surveillance",
+    "display_name": "RECO-MSP-A10 - Plan d'actions correctives et de remédiation",
+    "n8n_workflow_id": "workflow_recommandations",
+    "description": "Plan d'actions pour corriger les déficiences majeures de contrôle interne",
+    "column_definitions": [
+      {
+        "name": "numero",
+        "type": "number",
+        "label": "N°",
+        "required": true
+      },
+      {
+        "name": "sous_processus",
+        "type": "text",
+        "label": "Sous-processus",
+        "required": true
+      },
+      {
+        "name": "ref_controle",
+        "type": "text",
+        "label": "Réf contrôle",
+        "required": true
+      },
+      {
+        "name": "point_controle",
+        "type": "text",
+        "label": "Point de contrôle",
+        "required": true
+      },
+      {
+        "name": "controle_second_niveau",
+        "type": "text",
+        "label": "Contrôle de second niveau",
+        "required": true
+      },
+      {
+        "name": "assertion",
+        "type": "select",
+        "label": "Assertion",
+        "required": true,
+        "options": [
+          "Efficacité du contrôle interne",
+          "Traçabilité",
+          "Conformité légale",
+          "Responsabilisation"
+        ]
+      },
+      {
+        "name": "anomalie",
+        "type": "text",
+        "label": "Anomalie",
+        "required": true
+      },
+      {
+        "name": "plan_action",
+        "type": "text",
+        "label": "Plan d'action",
+        "required": true
+      }
+    ]
+  },
+  "sample_data": [
+    {
+      "numero": 1,
+      "sous_processus": "Détection et gel des comptes inactifs",
+      "ref_controle": "REC-MSP-001",
+      "point_controle": "Automatisation du basculement système des comptes sans mouvement initié par le client depuis plus de 12 mois (inactifs) et 24 mois (dormants) sans intervention manuelle de l'agence.",
+      "controle_second_niveau": "Rapprochement mensuel par la Direction du Contrôle Interne (DCI) entre l'inventaire brut des comptes sans flux client et la base des comptes effectivement flaggés 'Bloqués/Dormants' dans le Core Banking.",
+      "assertion": "Efficacité du contrôle interne",
+      "anomalie": "Maintien actif en agence de comptes sans mouvement depuis plus de deux ans, facilitant le ciblage de comptes abandonnés par des agents indélicats.",
+      "plan_action": "DSI : Paramétrer dans le Core Banking une routine batch nocturne mensuelle bloquant automatiquement tout compte sans mouvement client après 730 jours. Échéance : 15 jours. Responsable : DSI."
+    },
+    {
+      "numero": 2,
+      "sous_processus": "Gestion des habilitations de réactivation",
+      "ref_controle": "REC-MSP-002",
+      "point_controle": "Mise en place d'un verrou applicatif strict de double clé informatique (Maker agence / Checker Direction de la Conformité au siège) pour toute levée de dormance.",
+      "controle_second_niveau": "Extraction mensuelle par le Contrôle Permanent des logs de déblocage et vérification de l'existence d'une validation numérique émanant exclusivement du siège.",
+      "assertion": "Efficacité du contrôle interne",
+      "anomalie": "Défaut de verrouillage informatique permettant au Chef d'Agence Adjoint de lever unilatéralement le statut dormant d'un compte sans accord préalable du siège.",
+      "plan_action": "DSI & Conformité : Supprimer les profils de déblocage unilatéral en agence ; subordonner la levée de dormance dans l'applicatif bancaire au visa cryptographique du Responsable Conformité Siège. Échéance : Immédiate. Responsable : DSI."
+    }
+  ]
+}

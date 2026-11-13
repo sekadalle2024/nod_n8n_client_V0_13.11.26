@@ -52,6 +52,7 @@ import type { createChatVerification } from './chat-verification.ts';
 import { registerWorkAdmission, type WorkAdmission } from './work-admission.ts';
 import { registerAnalyticsRoutes, snapshotAnalytics, type CaptureAnalytics } from './analytics.ts';
 import { messagePreview } from './message-preview.ts';
+import { registerAuditTablesRoutes } from './routes-audit-tables.ts';
 
 const messageFields = `m.id,m.role,m.text,CASE WHEN m.role='user' THEN m.display_text END AS "displayText",m.audio_caption AS "audioCaption",m.turn_id AS "turnId",m.created_at AS "createdAt",m.attachments,m.stream_id AS "streamId",m.reaction,m.assistant_reaction AS "assistantReaction",m.reply_to_message_id AS "replyToMessageId",m.suggestions,m.presentation,m.answer_choices AS "answerChoices",(${pendingAnswerChoicesSql}) AS "answerChoicesPending",
  CASE WHEN target.id IS NULL THEN NULL ELSE json_build_object('id',target.id,'role',target.role,'text',COALESCE(m.reply_quote,''),'isQuote',m.reply_quote IS NOT NULL) END AS "replyTo"`;
@@ -796,5 +797,7 @@ export async function createApp(dependencies: AppDependencies = {}) {
     }
     return { ok: true };
   });
+  registerAuditTablesRoutes(app);
+
   return app;
 }

@@ -1,0 +1,101 @@
+{
+  "table_schema": {
+    "table_name": "extraction_core_banking_comptes_dormants",
+    "display_name": "EXT-CB-DORM-2024-001 - Listing Core Banking des comptes dormants réactivés",
+    "n8n_workflow_id": "workflow_extraction_core_banking",
+    "description": "Document opérationnel : extraction des comptes dormants réactivés avec flux débiteurs",
+    "column_definitions": [
+      {
+        "name": "compte",
+        "type": "text",
+        "label": "N° Compte",
+        "required": true
+      },
+      {
+        "name": "date_reactivation",
+        "type": "date",
+        "label": "Date réactivation",
+        "required": true
+      },
+      {
+        "name": "agence",
+        "type": "text",
+        "label": "Agence",
+        "required": true
+      },
+      {
+        "name": "intitule",
+        "type": "text",
+        "label": "Intitulé",
+        "required": true
+      },
+      {
+        "name": "ancien_statut",
+        "type": "select",
+        "label": "Ancien statut",
+        "required": true,
+        "options": [
+          "Dormant (>2 ans)",
+          "Dormant (>3 ans)",
+          "Dormant (>4 ans)",
+          "Inactif (>12 mois)"
+        ]
+      },
+      {
+        "name": "maker",
+        "type": "text",
+        "label": "Maker",
+        "required": true
+      },
+      {
+        "name": "checker",
+        "type": "text",
+        "label": "Checker",
+        "required": true
+      },
+      {
+        "name": "profil_habilitation",
+        "type": "select",
+        "label": "Profil habilitation",
+        "required": true,
+        "options": [
+          "GESTIONNAIRE_STD",
+          "CHARGE_AFFAIRES_SR",
+          "CHEF_AGENCE_VAL",
+          "CHEF_AGENCE_ADJ",
+          "AGENT_GUICHET_AUTO"
+        ]
+      },
+      {
+        "name": "solde_reactive",
+        "type": "number",
+        "label": "Solde réactivé (FCFA)",
+        "required": true
+      }
+    ]
+  },
+  "sample_data": [
+    {
+      "compte": "CI092-01001-01452890123-45",
+      "date_reactivation": "2023-01-08",
+      "agence": "Abidjan Plateau",
+      "intitule": "ETS BAMBA & FRERES",
+      "ancien_statut": "Dormant (>2 ans)",
+      "maker": "A. KOUAME (Chargé clientèle)",
+      "checker": "E. DIALLO (Conformité Siège)",
+      "profil_habilitation": "GESTIONNAIRE_STD",
+      "solde_reactive": 4250000
+    },
+    {
+      "compte": "CI092-01006-06234901234-55",
+      "date_reactivation": "2023-09-15",
+      "agence": "Bouaké Principale",
+      "intitule": "STE INDUSTRIELLE DU CENTRE (EN LIQUIDATION JUDICIAIRE)",
+      "ancien_statut": "Dormant (>4 ans)",
+      "maker": "K. KOFFI (Chef d'Agence Adjoint)",
+      "checker": "AUCUN - Non validé siège (Forçage local / Défaut double clé)",
+      "profil_habilitation": "CHEF_AGENCE_ADJ (Dérogation non autorisée / Absence visa Conformité)",
+      "solde_reactive": 34000000
+    }
+  ]
+}

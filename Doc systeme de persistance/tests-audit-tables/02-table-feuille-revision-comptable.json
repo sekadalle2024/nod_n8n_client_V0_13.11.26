@@ -1,0 +1,157 @@
+{
+  "table_schema": {
+    "table_name": "feuille_revision_comptes_depots",
+    "display_name": "FR-CPT-A10 - Révision des comptes de dépôts et comptes indisponibles",
+    "n8n_workflow_id": "workflow_revision_comptable",
+    "description": "Feuille de révision comptable pour vérifier la régularité des écritures de débit sur comptes dormants",
+    "column_definitions": [
+      {
+        "name": "ordre",
+        "type": "number",
+        "label": "N° Ordre",
+        "required": true
+      },
+      {
+        "name": "compte_pcb",
+        "type": "text",
+        "label": "N° Compte PCB",
+        "required": true
+      },
+      {
+        "name": "date_operation",
+        "type": "date",
+        "label": "Date Opération",
+        "required": true
+      },
+      {
+        "name": "libelle_ecriture",
+        "type": "text",
+        "label": "Libellé Écriture",
+        "required": true
+      },
+      {
+        "name": "montant_debit",
+        "type": "number",
+        "label": "Montant Débit Comptabilisé (FCFA)",
+        "required": true
+      },
+      {
+        "name": "ref_piece",
+        "type": "text",
+        "label": "Réf Pièce Justificative",
+        "required": true
+      },
+      {
+        "name": "montant_justifie",
+        "type": "number",
+        "label": "Montant Justifié (FCFA)",
+        "required": true
+      },
+      {
+        "name": "ecart",
+        "type": "number",
+        "label": "Écart d'Ajustement (FCFA)",
+        "required": true
+      },
+      {
+        "name": "assertion",
+        "type": "select",
+        "label": "Assertion",
+        "required": false,
+        "options": [
+          "Validité",
+          "Exhaustivité",
+          "Droits et obligations",
+          "Présentation",
+          "Comptabilisation"
+        ]
+      },
+      {
+        "name": "ctr_1",
+        "type": "select",
+        "label": "CTR 1",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "ctr_2",
+        "type": "select",
+        "label": "CTR 2",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "ctr_3",
+        "type": "select",
+        "label": "CTR 3",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "ctr_4",
+        "type": "select",
+        "label": "CTR 4",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "ctr_5",
+        "type": "select",
+        "label": "CTR 5",
+        "required": false,
+        "options": ["+", "-", "x"]
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "label": "Description",
+        "required": false
+      },
+      {
+        "name": "conclusion",
+        "type": "select",
+        "label": "Conclusion",
+        "required": true,
+        "options": ["Satisfaisant", "Non-satisfaisant"]
+      }
+    ]
+  },
+  "sample_data": [
+    {
+      "ordre": 1,
+      "compte_pcb": "251100",
+      "date_operation": "2024-05-14",
+      "libelle_ecriture": "CHQ-CERT-0091 SOC. IVOIRIENNE LIQUIDATION",
+      "montant_debit": 34000000,
+      "ref_piece": "CHQ-CERT-0091",
+      "montant_justifie": 0,
+      "ecart": 34000000,
+      "assertion": "Validité",
+      "ctr_1": "-",
+      "ctr_2": "-",
+      "ctr_3": "-",
+      "ctr_4": "-",
+      "ctr_5": "-",
+      "description": "Écriture de débit non justifiée de 34 000 000 FCFA enregistrée suite à l'émission d'un chèque certifié sans autorisation du mandataire liquidateur officiel ni validation conjointe du siège.",
+      "conclusion": "Non-satisfaisant"
+    },
+    {
+      "ordre": 2,
+      "compte_pcb": "251100",
+      "date_operation": "2024-05-18",
+      "libelle_ecriture": "RETRAIT GUICHET ETS BARRY & CIE",
+      "montant_debit": 2500000,
+      "ref_piece": "RT-2024-512",
+      "montant_justifie": 2500000,
+      "ecart": 0,
+      "assertion": "",
+      "ctr_1": "+",
+      "ctr_2": "+",
+      "ctr_3": "+",
+      "ctr_4": "+",
+      "ctr_5": "+",
+      "description": "Retrait d'espèces de 2 500 000 FCFA conforme aux pouvoirs bancaires en vigueur et justifié par un bordereau signé.",
+      "conclusion": "Satisfaisant"
+    }
+  ]
+}

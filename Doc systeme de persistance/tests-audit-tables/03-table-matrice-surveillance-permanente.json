@@ -1,0 +1,64 @@
+{
+  "table_schema": {
+    "table_name": "matrice_surveillance_permanente",
+    "display_name": "MSP-BK-A10 - Matrice de surveillance permanente des comptes inactifs",
+    "n8n_workflow_id": "workflow_matrice_surveillance",
+    "description": "Matrice de contrôle permanent de 1er et 2nd niveau pour le cycle des comptes inactifs et dormants",
+    "column_definitions": [
+      {
+        "name": "numero",
+        "type": "number",
+        "label": "N°",
+        "required": true
+      },
+      {
+        "name": "point_controle",
+        "type": "text",
+        "label": "Point de contrôle",
+        "required": true
+      },
+      {
+        "name": "risque",
+        "type": "text",
+        "label": "Risque",
+        "required": true
+      },
+      {
+        "name": "controle_1er_niveau",
+        "type": "text",
+        "label": "Contrôle de premier niveau",
+        "required": true
+      },
+      {
+        "name": "controle_2nd_niveau",
+        "type": "text",
+        "label": "Contrôle de second niveau",
+        "required": true
+      },
+      {
+        "name": "document",
+        "type": "text",
+        "label": "Document",
+        "required": true
+      }
+    ]
+  },
+  "sample_data": [
+    {
+      "numero": 1,
+      "point_controle": "Détection automatique et classification des comptes sans mouvement depuis plus de 12 mois consécutifs",
+      "risque": "Maintien erroné de comptes inactifs en statut actif favorisant l'initiation d'opérations frauduleuses non surveillées par le personnel d'agence.",
+      "controle_1er_niveau": "Exécution mensuelle automatisée du batch d'identification des comptes sans mouvement client depuis 365 jours et visa du superviseur des opérations d'agence.",
+      "controle_2nd_niveau": "Rapprochement contradictoire par le Contrôleur Permanent entre la base globale des comptes et l'état des comptes classés inactifs produit par le Core Banking.",
+      "document": "État mensuel Core Banking des comptes inactifs (ETAT-INACT-01), PV de contrôle de premier niveau d'agence."
+    },
+    {
+      "numero": 2,
+      "point_controle": "Bascule automatique en compte dormant et verrouillage système après 24 mois d'inactivité (Instruction BCEAO 008/07/2013)",
+      "risque": "Défaut de gel informatique strict des comptes dormants permettant des retraits frauduleux ou des virements non détectés en agence.",
+      "controle_1er_niveau": "Vérification systématique par le Chef de Service Caisse/Opérations de l'application de l'attribut système 'Bloqué/Dormant' interdisant tout débit sans dérogation.",
+      "controle_2nd_niveau": "Audit sur extraction IT de l'exhaustivité des comptes atteignant 2 ans d'inactivité pour attester du blocage technique effectif à 100 % sans exclusion manuelle.",
+      "document": "Journal des événements Core Banking, Rapport des statuts de comptes bloqués (REP-GEL-02)."
+    }
+  ]
+}

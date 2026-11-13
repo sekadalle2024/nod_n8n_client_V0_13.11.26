@@ -1,6 +1,6 @@
 FROM rust:1.99.1-bookworm@sha256:e12566d5abc17a0da741628782cdb504b68b8961f5bfcf677936bf3e8b32de29 AS rtk
 COPY src/providers/docker/install-rtk.sh /tmp/install-rtk.sh
-RUN sh /tmp/install-rtk.sh
+RUN bash /tmp/install-rtk.sh
 
 FROM node:24.21.0-bookworm-slim@sha256:d6aa754f16b3197301076f047b5def2f02ea1dbbc2ca920407d46d7ec7f87b20
 ARG NOD_RUNTIME_REFRESH

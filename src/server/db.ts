@@ -3,6 +3,7 @@ import pg from 'pg';
 import { databaseUrl, ownerId } from './config.ts';
 import { locksTable } from './locks.ts';
 import { transaction } from './transaction.ts';
+import { initializeAuditTables } from './db-audit-tables.ts';
 
 function poolSize(value: string | undefined, fallback: number) {
   const size = value === undefined ? fallback : Number(value);
@@ -177,4 +178,6 @@ export async function initializeDatabase() {
         [ownerId],
       );
   }, pool);
+
+  await initializeAuditTables();
 }
