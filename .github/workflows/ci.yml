@@ -153,7 +153,7 @@ jobs:
           pnpm --dir evals test
       - name: Set up the Docker layer cache
         if: needs.scope.outputs.images == 'true'
-        uses: useblacksmith/setup-docker-builder@06dd9c83a5d541274d2e3ac67625560979275267
+        uses: useblacksmith/setup-docker-builder@9657a6e02ca6445e6d6ce5ffaf370f4828dea50d
         with:
           cache-key: n8n-io/nod/ci
       - name: Build the computer and integration images
